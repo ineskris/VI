@@ -21,7 +21,7 @@ y = np.random.binomial(1,sigmoid(np.dot(X,w_real)),n)
 
 
 class bbvi(torch.nn.Module):
-    def __init__(self, p=1, nb_sample=10):
+    def __init__(self, p=1, nb_sample=100):
         self.p = p #1 for now 
         self.nb_sample = nb_sample
 
