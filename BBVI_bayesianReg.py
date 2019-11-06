@@ -43,7 +43,8 @@ class bbvi(torch.nn.Module):
     
     def reparam(self, eps):
         eps = Variable(torch.FloatTensor(eps))
-        return  eps.mul(self.softplus(self.std)).add(self.mu)
+        return  eps
+    #.mul(self.softplus(self.std)).add(self.mu)
     
     def compute_elbo(self, X, y ):
         eps = self.gen_sample()
