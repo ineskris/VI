@@ -43,14 +43,14 @@ class bbvi(torch.nn.Module):
     def reparam(self, eps):
         eps = Variable(torch.FloatTensor(eps))
         sigma = self.logsigma.exp()
-        return  eps.mul(self.softplus(sigma)).add(self.mu)
+        return  eps.mul(sigma).add(self.mu)
     
     def compute_elbo(self, X, y ):
         eps = self.gen_sample()
         z = self.reparam(eps) 
         sigma = self.logsigma.exp()
 
-        q_likelihood = Normal(self.mu,self.softplus(sigma)).log_prob(z).mean(1).mean(0)
+        q_likelihood = Normal(self.mu,sigma).log_prob(z).mean(1).mean(0)
         prior = Normal(self.prior_m, self.softplus(self.prior_s)).log_prob(z).mean(1).mean(0)
         kld = q_likelihood - prior
 
