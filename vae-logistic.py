@@ -31,7 +31,7 @@ class VAE(nn.Module):
         
     def encoder(self, y):
         p = y.mean() #estimator
-        x = p.log()-(1-p).log()
+        xz = p.log()-(1-p).log()
         mu = xz
        
         return mu
