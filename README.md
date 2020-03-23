@@ -1,5 +1,5 @@
 # Variational Inference 
 
-Code and examples related to VI nad VAE
+Code and examples related to VI and VAE
 
 
